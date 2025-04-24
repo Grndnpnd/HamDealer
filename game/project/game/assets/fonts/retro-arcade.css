@@ -1,0 +1,13 @@
+/* Retro Arcade Font */
+@font-face {
+    font-family: 'RetroArcade';
+    src: local('Courier New');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.retro-text {
+    font-family: 'RetroArcade', 'Courier New', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}

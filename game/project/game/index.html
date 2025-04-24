@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAM DEALER</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div id="loading-text">LOADING HAM DEALER...</div>
+        <div class="loading-bar-container">
+            <div id="loading-bar" class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="assets/audio/background_music.wav" type="audio/wav">
+    </audio>
+
+    <div class="game-container pixel-border">
+        <header>
+            <h1>HAM DEALER</h1>
+            <div class="player-info">
+                <div class="avatar">
+                    <img src="assets/images/avatar.png" alt="Player Avatar">
+                </div>
+                <div class="stats">
+                    <p>Cash: $<span id="player-cash">1000</span></p>
+                    <p>Debt: $<span id="player-debt">0</span></p>
+                    <p>Debt Due: Day <span id="debt-due-day">N/A</span></p>
+                    <p>Current Day: <span id="current-day">1</span></p>
+                    <p>Location: <span id="current-location">Market</span></p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="market-section" class="game-section pixel-border">
+                <h2>Ham Market</h2>
+                <div id="ham-list" class="ham-container">
+                    <!-- Ham items will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <section id="inventory-section" class="game-section pixel-border">
+                <h2>Your Inventory</h2>
+                <div id="inventory-list" class="inventory-container">
+                    <!-- Inventory items will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <section id="travel-section" class="game-section pixel-border">
+                <h2>Travel</h2>
+                <div id="location-list" class="location-container">
+                    <!-- Location options will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+
+        <div id="event-popup" class="popup hidden">
+            <div class="popup-content pixel-border">
+                <h3 id="event-title">Event Title</h3>
+                <p id="event-description">Event description goes here.</p>
+                <div id="event-choices" class="event-choices">
+                    <!-- Event choices will be dynamically inserted here -->
+                </div>
+                <button id="close-popup" class="button">Close</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>HAM DEALER - A Retro Arcade Economy Simulation Game</p>
+            <div id="audio-controls">
+                <button id="toggle-music" class="button">Music: Off</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/game.js"></script>
+    <script src="js/market.js"></script>
+    <script src="js/travel.js"></script>
+    <script src="js/events.js"></script>
+    <script>
+        // Loading screen functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const loadingBar = document.getElementById('loading-bar');
+            const backgroundMusic = document.getElementById('background-music');
+            const toggleMusicBtn = document.getElementById('toggle-music');
+            
+            // Simulate loading progress
+            let progress = 0;
+            const loadingInterval = setInterval(() => {
+                progress += 5;
+                loadingBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(loadingInterval);
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 500);
+                    }, 500);
+                }
+            }, 100);
+            
+            // Background music controls
+            toggleMusicBtn.addEventListener('click', function() {
+                if (backgroundMusic.paused) {
+                    backgroundMusic.volume = 0.3; // Low volume
+                    backgroundMusic.play();
+                    toggleMusicBtn.textContent = 'Music: On';
+                } else {
+                    backgroundMusic.pause();
+                    toggleMusicBtn.textContent = 'Music: Off';
+                }
+            });
+            
+            // Add transition for loading screen
+            loadingScreen.style.transition = 'opacity 0.5s ease';
+        });
+    </script>
+</body>
+</html>
