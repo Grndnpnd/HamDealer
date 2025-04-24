@@ -29,7 +29,7 @@ Make as much money as possible by buying ham at low prices and selling at higher
 5. Keep some cash reserve for emergencies and opportunities
 
 ## Play the Game
-You can play HAM DEALER online at: [https://ham-dealer.netlify.app](https://ham-dealer.netlify.app)
+You can play HAM DEALER online at: [https://www.hamdealer.xyz/)
 
 ## Development
 HAM DEALER was developed using HTML, CSS, and JavaScript as a browser-based game with a focus on retro-styled aesthetics and engaging economic gameplay.
